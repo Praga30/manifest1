@@ -4,19 +4,32 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import com.google.android.material.textfield.TextInputEditText
 
 class MainActivity : AppCompatActivity() {
 
     fun Silnia(){
-        
+        println("Test")
+        val num=6
+        val silnia= mnozenieliczb(num)
+        findViewById<Button>(R.id.wywolaniesil).setOnClickListener {
+            findViewById<TextView>(R.id.test).setText("Silnia $num = $silnia")
+        }
+        println("Silnia $num = $silnia")
+    }
+    fun mnozenieliczb(num: Int): Long{
+        if(num>=1)
+            return num * mnozenieliczb(num-1)
+        else
+            return 1
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         var numer = 1
+        Silnia()
 
         findViewById<Button>(R.id.last).setOnClickListener {
             if(numer==1) {
